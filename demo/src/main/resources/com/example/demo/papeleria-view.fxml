@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.demo.controller.ProductoController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <!-- SECCIÓN: Búsqueda y Filtros -->
+    <TitledPane text="Búsqueda y Filtros" collapsible="false">
+        <VBox spacing="10">
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <TextField fx:id="txtBuscar" promptText="Buscar por código o nombre" prefWidth="250"/>
+                <ComboBox fx:id="cbFiltroCategoria" promptText="Categoría" prefWidth="150"/>
+                <CheckBox fx:id="chkSoloExistencias" text="Solo con existencias"/>
+            </HBox>
+            <HBox spacing="10">
+                <Button text="Buscar" onAction="#buscarProductos" prefWidth="100" style="-fx-base: #3498db; -fx-text-fill: white;"/>
+                <Button text="Limpiar filtros" onAction="#limpiarFiltros" prefWidth="120"/>
+                <Button text="Recargar BD" onAction="#recargarTabla" prefWidth="100"/>
+                <Label fx:id="lblContador" text="Registros: 0" style="-fx-font-weight: bold;">
+                    <HBox.margin><Insets left="20.0" top="4.0"/></HBox.margin>
+                </Label>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <!-- SECCIÓN: TableView -->
+    <TableView fx:id="tblProductos" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colCodigo" text="Código" prefWidth="100"/>
+            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="250"/>
+            <TableColumn fx:id="colCategoria" text="Categoría" prefWidth="150"/>
+            <TableColumn fx:id="colPrecio" text="Precio" prefWidth="100"/>
+            <TableColumn fx:id="colStock" text="Stock" prefWidth="80"/>
+        </columns>
+    </TableView>
+</VBox>
