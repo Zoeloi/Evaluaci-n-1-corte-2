@@ -10,7 +10,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <!-- SECCIÓN: Búsqueda y Filtros -->
+
     <TitledPane text="Búsqueda y Filtros" collapsible="false">
         <VBox spacing="10">
             <HBox spacing="15" alignment="CENTER_LEFT">
@@ -29,8 +29,36 @@
         </VBox>
     </TitledPane>
 
+    <!-- SECCIÓN: Formulario CRUD  -->
+    <TitledPane text="Gestión de Productos" collapsible="false">
+        <GridPane hgap="15" vgap="10">
+            <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtCodigo" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="250"/>
+
+            <Label text="Categoría:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <ComboBox fx:id="cbCategoria" GridPane.columnIndex="3" GridPane.rowIndex="0" prefWidth="150"/>
+
+            <Label text="Precio (C$):" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <TextField fx:id="txtPrecio" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+            <Label text="Stock:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="txtStock" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <HBox spacing="15" GridPane.columnIndex="0" GridPane.columnSpan="4" GridPane.rowIndex="3" alignment="CENTER">
+                <padding><Insets top="10"/></padding>
+                <Button text="Guardar" onAction="#guardarProducto" prefWidth="90" style="-fx-base: #2ecc71; -fx-text-fill: white;"/>
+                <Button text="Actualizar" onAction="#actualizarProducto" prefWidth="90" style="-fx-base: #f1c40f;"/>
+                <Button text="Eliminar" onAction="#eliminarProducto" prefWidth="90" style="-fx-base: #e74c3c; -fx-text-fill: white;"/>
+                <Button text="Nuevo / Limpiar" onAction="#limpiarFormulario" prefWidth="120"/>
+            </HBox>
+        </GridPane>
+    </TitledPane>
+
     <!-- SECCIÓN: TableView -->
-    <TableView fx:id="tblProductos" VBox.vgrow="ALWAYS">
+    <TableView fx:id="tblProductos" VBox.vgrow="ALWAYS" onMouseClicked="#seleccionarProducto">
         <columns>
             <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
             <TableColumn fx:id="colCodigo" text="Código" prefWidth="100"/>
